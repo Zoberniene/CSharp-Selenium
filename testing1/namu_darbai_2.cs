@@ -3,6 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Safari;
 
 namespace testing1
 {
@@ -30,6 +31,18 @@ namespace testing1
             string browserText = firefox.FindElement(By.CssSelector("#primary-detection > div")).Text;
             Assert.IsTrue(browserText.Contains("Firefox"), "Wrong browser");
             firefox.Quit();
+        }
+        
+        [Test]
+        public static void TestSafari()
+        {
+            IWebDriver safari = new SafariDriver();
+            safari.Manage().Window.Maximize();
+            safari.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            safari.Url = "https://developers.whatismybrowser.com/useragents/parse/?analyse-my-user-agent=yes#parse-useragent";
+            string browserText = safari.FindElement(By.CssSelector("#primary-detection > div")).Text;
+            Assert.IsTrue(browserText.Contains("Safari"), "Wrong browser");
+            safari.Quit();
         }
     }
 }
