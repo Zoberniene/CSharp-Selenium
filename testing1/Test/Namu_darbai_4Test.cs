@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -20,24 +22,24 @@ namespace testing1.Test
             chrome.Manage().Window.Maximize();
             chrome.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             chrome.Url = "https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_select_multiple";
+            page.AcceptCookies();
         }
 
         [OneTimeTearDown]
         public static void OneTimeTearDown()
         {
-            //page.CloseBrowser();
+            page.CloseBrowser();
         }
 
-
-        [Test]
-        public static void TestButton()
+        [TestCase("Volvo", "Opel", TestName ="Selected Volvo, Opel")]
+        [TestCase("Volvo", "Saab", "Audi", TestName = "Selected Volvo, Saab, Audi")]
+        [TestCase("Audi", "Saab", TestName = "Selected Audi, Saab")]
+        public static void TestSelectingMultipleCars(params string[] cars)
         {
-            page.AcceptCookies();
-            //Thread.Sleep(5000);
+            List<string> carsList = cars.ToList();
+            page.SelectCars(carsList);
             page.ClickSubmitButton();
-
-
-
+            page.VerifySelectedCarsResult(carsList);
         }
     }
 }
