@@ -40,6 +40,7 @@ namespace testing1.Test
             page.SelectCars(carsList);
             page.ClickSubmitButton();
             page.VerifySelectedCarsResult(carsList);
+            page.RerunPage();
         }
     }
 }
