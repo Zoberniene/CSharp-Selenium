@@ -15,11 +15,19 @@ namespace testing1.Test
         {
             baigiamasisProjektasAirbnbPage.NavigateToPage();
             baigiamasisProjektasAirbnbPage.ClickFlexibleButton();
-            baigiamasisProjektasAirbnbPage.ChooseBeachfrontOption();
-            baigiamasisProjektasAirbnbPage.ClickButtonAnytime();
-            baigiamasisProjektasAirbnbPage.ClickButtonWeekend();
-            baigiamasisProjektasAirbnbPage.ClickButtonSave();
-            baigiamasisProjektasAirbnbPage.VerifyBeachfrontResults();
+            airbnbFexiblePage.ChooseBeachfrontOption();
+            airbnbFexiblePage.VerifyBeachfrontResults();
+        }
+
+        [Test]
+        public static void TestWeekendFilter()
+        {
+            baigiamasisProjektasAirbnbPage.NavigateToPage();
+            baigiamasisProjektasAirbnbPage.ClickFlexibleButton();
+            airbnbFexiblePage.ClickButtonAnytime();
+            airbnbFexiblePage.ClickButtonWeekend();
+            airbnbFexiblePage.ClickButtonSave();
+            airbnbFexiblePage.VerifyWeekendResults();
         }
     }
 }
