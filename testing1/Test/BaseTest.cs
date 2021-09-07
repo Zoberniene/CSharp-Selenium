@@ -14,6 +14,8 @@ namespace testing1.Test
         protected static IWebDriver driver;
         public static Baigiamasis_projektas_AirbnbPage baigiamasisProjektasAirbnbPage;
         public static AirbnbFexiblePage airbnbFexiblePage;
+        public static AirbnbSearchResultsPage airbnbSearchResultsPage;
+        
 
         [OneTimeSetUp]
         public static void OneTimeSetUp()
@@ -21,6 +23,7 @@ namespace testing1.Test
             driver = CustomDriver.GetChrome();
             baigiamasisProjektasAirbnbPage = new Baigiamasis_projektas_AirbnbPage(driver);
             airbnbFexiblePage = new AirbnbFexiblePage(driver);
+            airbnbSearchResultsPage = new AirbnbSearchResultsPage(driver);
         }
 
         [TearDown]

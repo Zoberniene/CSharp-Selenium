@@ -39,7 +39,7 @@ namespace testing1.Test
             baigiamasisProjektasAirbnbPage.SelectCountry();
             baigiamasisProjektasAirbnbPage.InsertPhoneNumber("456");
             baigiamasisProjektasAirbnbPage.ClickContinueButton();
-            baigiamasisProjektasAirbnbPage.VerifyWrongPhoneNumberMessage();
+            baigiamasisProjektasAirbnbPage.VerifyWrongPhoneNumberMessage(); //todo: stiliu patikrinti
         }
         
         [Test]
@@ -50,7 +50,19 @@ namespace testing1.Test
             baigiamasisProjektasAirbnbPage.ClickSignupButton();
             baigiamasisProjektasAirbnbPage.InsertPhoneNumber("45699999999997");
             baigiamasisProjektasAirbnbPage.ClickContinueButton();
-            baigiamasisProjektasAirbnbPage.VerifyTooLongPhoneNumberMessage();
+            baigiamasisProjektasAirbnbPage.VerifyTooLongPhoneNumberMessage(); //todo: stiliu patikrinti
+        }
+        
+        [Test]
+        public static void TestAveragePriceFor2AdultsOctober()
+        {
+            baigiamasisProjektasAirbnbPage.NavigateToPage();
+            baigiamasisProjektasAirbnbPage.InsertLocationInput();
+            baigiamasisProjektasAirbnbPage.AddDate();
+            baigiamasisProjektasAirbnbPage.AddGuests();
+            baigiamasisProjektasAirbnbPage.ClickSearchButton();
+            airbnbSearchResultsPage.ClickPriceButton();
+            airbnbSearchResultsPage.VerifyAveragePriceResults();
         }
     }
 }
