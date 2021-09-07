@@ -17,9 +17,6 @@ namespace testing1.Page
 
         private IWebElement weekendButton => Driver.FindElement(By.CssSelector("#flexible_trip_lengths-weekend_trip > button"));
         
-        //private IWebElement weekendHouse => Driver.FindElement(By.CssSelector("#search-results-container > div > div > div > div > div:nth-child(3) > div > div > div:nth-child(1) > div._1e541ba5 > div > div > div._e296pg > div._3x2xkx > div > div._e296pg > div._1mx6kqf > div > span > div > a"));
-        //private IWebElement weekendHouse => Driver.FindElement(By.XPath("//*[@id='search-results-container']/div/div/div/div/div[3]/div/div/div[1]/div[2]/div/div/div[1]/div[1]/div/div[1]/div[1]/div/span/div/a"));
-        
         IReadOnlyCollection<IWebElement> beachfrontResults => Driver.FindElements(By.CssSelector("#search-results-container > div > div > div > div > div:nth-child(3) > div > div > div > div._1e541ba5 > div > div > div._e296pg > div._3x2xkx > div > div._e296pg > div._1mx6kqf > div > span > div > a"));
 
         IReadOnlyCollection<IWebElement> weekendHouses => Driver.FindElements(By.CssSelector("#search-results-container > div > div > div > div > div:nth-child(3) > div > div > div > div._1e541ba5 > div > div > div._e296pg > div._3x2xkx > div > div._e296pg > div._1mx6kqf > div > span > div > a"));
@@ -49,18 +46,19 @@ namespace testing1.Page
             {
                 Assert.IsTrue(beachfront.GetAttribute("href").Contains("category_tag=Tag%3A789"), "Wrong result");
             }
+            
         }
         
         public void VerifyWeekendResults()
         {
             foreach (IWebElement house in weekendHouses)
             {
-                var checkIn = house.GetAttribute("href").Substring(95, 10);
-                var checkOut = house.GetAttribute("href").Substring(120, 10);
-                var in1 = Convert.ToDateTime(checkIn);
-                var out2 = Convert.ToDateTime(checkOut);
-                var diff = out2 - in1;
-                var daysDiff = diff.ToString();
+                string checkIn = house.GetAttribute("href").Substring(101, 10);
+                string checkOut = house.GetAttribute("href").Substring(122, 10);
+                DateTime in1 = Convert.ToDateTime(checkIn);
+                DateTime out2 = Convert.ToDateTime(checkOut);
+                TimeSpan diff = out2 - in1;
+                string daysDiff = diff.ToString();
                 Assert.AreEqual('2', daysDiff[0], "Wrong date difference");
             }
         }
