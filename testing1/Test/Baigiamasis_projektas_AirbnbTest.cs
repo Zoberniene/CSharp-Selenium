@@ -64,5 +64,17 @@ namespace testing1.Test
             airbnbSearchResultsPage.ClickPriceButton();
             airbnbSearchResultsPage.VerifyAveragePriceResults();
         }
+        
+        [Test]
+        public static void TestOnlineExperiencesPriceFilter()
+        {
+            baigiamasisProjektasAirbnbPage.NavigateToPage();
+            baigiamasisProjektasAirbnbPage.ChooseExperiences();
+            airbnbExperiencesPage.ChooseFilters();
+            airbnbExperiencesPage.InsertPriceRange(); //iraso, bet neissaugo nauju reiksmiu, taip pat rankiniu budu testuojant, bug'as
+            airbnbExperiencesPage.ShowFilteredResults();
+            Thread.Sleep(5000);
+            airbnbExperiencesPage.VerifyFilteredPriceResults();
+        }
     }
 }

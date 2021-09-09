@@ -15,6 +15,7 @@ namespace testing1.Test
         public static Baigiamasis_projektas_AirbnbPage baigiamasisProjektasAirbnbPage;
         public static AirbnbFexiblePage airbnbFexiblePage;
         public static AirbnbSearchResultsPage airbnbSearchResultsPage;
+        public static AirbnbExperiencesPage airbnbExperiencesPage;
         
 
         [OneTimeSetUp]
@@ -24,6 +25,7 @@ namespace testing1.Test
             baigiamasisProjektasAirbnbPage = new Baigiamasis_projektas_AirbnbPage(driver);
             airbnbFexiblePage = new AirbnbFexiblePage(driver);
             airbnbSearchResultsPage = new AirbnbSearchResultsPage(driver);
+            airbnbExperiencesPage = new AirbnbExperiencesPage(driver);
         }
 
         [TearDown]

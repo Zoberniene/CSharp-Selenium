@@ -31,6 +31,7 @@ namespace testing1.Page
         private IWebElement guestsButton => Driver.FindElement(By.CssSelector("body > div:nth-child(7) > div > div > div:nth-child(1) > div > div > div._16grqhk > div._siy8gh > div > header > div > div._1gzu4h3 > div._zusf8ed > div > div > div > form > div._1rrb221v > div > div._1yulsurh > div._37ivfdq"));
         private IWebElement increaseGuestsNum => Driver.FindElement(By.CssSelector("#stepper-adults > button:nth-child(3)"));
         private IWebElement searchButton => Driver.FindElement(By.CssSelector("body > div:nth-child(7) > div > div > div:nth-child(1) > div > div > div._16grqhk > div._siy8gh > div > header > div > div._1gzu4h3 > div._zusf8ed > div > div > div > form > div._1rrb221v > div > div._1yulsurh > div._w64aej > button"));
+        private IWebElement experiencesButton => Driver.FindElement(By.CssSelector("body > div:nth-child(7) > div > div > div:nth-child(1) > div > div > div._16grqhk > div._siy8gh > div > header > div > div._1gzu4h3 > div._zusf8ed > div > div > div > form > div._17fy1ix > div._36rlri > a"));
         
         public Baigiamasis_projektas_AirbnbPage(IWebDriver webdriver) : base(webdriver) {}
         
@@ -112,6 +113,11 @@ namespace testing1.Page
         public void ClickSearchButton()
         {
             searchButton.Click();
+        }
+        
+        public void ChooseExperiences()
+        {
+            experiencesButton.Click();
         }
         
         private void WaitForResult()

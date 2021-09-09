@@ -9,7 +9,7 @@ namespace testing1.Page
 {
     public class AirbnbFexiblePage: BasePage
     {
-        private IWebElement beachfrontTab => Driver.FindElement(By.CssSelector("#filter-menu-chip-group > div:nth-child(2) > div > div._14an3y49 > div > div._alkx2 > div:nth-child(5) > button > div > div._j1kt73"));
+        private IWebElement beachfrontTab => Driver.FindElement(By.CssSelector("#filter-menu-chip-group > div:nth-child(2) > div > div._14an3y49 > div > div._alkx2 > div:nth-child(7)"));
         
         private IWebElement saveButton => Driver.FindElement(By.CssSelector("#filter-panel-save-button"));
         
