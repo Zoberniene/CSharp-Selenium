@@ -19,69 +19,54 @@ namespace Airbnb_baigiamasis_projektas.Test
         {
             homePage.NavigateToPage();
             homePage.ClickFlexibleButton();
-            flexiblePage.ClickButtonAnytime();
-            flexiblePage.ClickButtonWeekend();
-            flexiblePage.ClickButtonSave();
+            flexiblePage.ClickAnytimeButton();
+            flexiblePage.ClickWeekendButton();
+            flexiblePage.ClickSaveButton();
             flexiblePage.VerifyWeekendResults();
         }
         
-        [Test]
-        public static void TestPriceFilter()
+        /*[Test]
+        public static void TestPriceFilter() //netikrinta
         {
             homePage.NavigateToPage();
             homePage.ClickFlexibleButton();
             flexiblePage.ClickOnFilters();
             flexiblePage.InsertPriceRange();
-        }
-
+        }*/
         
         [Test]
-        public static void TestSignupInsertWrongPhoneNumber()
+        public static void TestSignupInsertWrongPhoneNumber() 
         {
             homePage.NavigateToPage();
+            Thread.Sleep(5000);
             homePage.ClickProfileButton();
             homePage.ClickSignupButton();
             homePage.SelectCountry();
-            homePage.InsertPhoneNumber("456");
+            homePage.InsertPhoneNumber("4566");
             homePage.ClickContinueButton();
-            homePage.VerifyWrongPhoneNumberMessage(); //todo: stiliu patikrinti
+            homePage.VerifyWrongPhoneNumberError(); 
         }
-        
-        [Test]
-        public static void TestSignupInsertTooLongPhoneNumber()
-        {
-            homePage.NavigateToPage();
-            homePage.ClickProfileButton(); //reiktu thread sleepu bandyt
-            homePage.ClickSignupButton();
-            homePage.InsertPhoneNumber("45699999999997");
-            homePage.ClickContinueButton();
-            homePage.VerifyTooLongPhoneNumberMessage(); //todo: stiliu patikrinti
-        }
-        
+
         [Test]
         public static void TestAveragePriceFor2AdultsOctober()
         {
             homePage.NavigateToPage();
-            Thread.Sleep(4000);
             homePage.InsertLocationInput();
             homePage.AddDate();
             homePage.AddGuests();
-            Thread.Sleep(2000);
             homePage.ClickSearchButton();
             searchResultsPage.ClickPriceButton();
             searchResultsPage.VerifyAveragePriceResults();
         }
         
         [Test]
-        public static void TestOnlineExperiencesLanguageFilter()
+        public static void TestOnlineExperiencesLanguageDanceFilter()
         {
             homePage.NavigateToPage();
-            homePage.ChooseExperiences();
+            homePage.ChooseOnlineExperiences();
             onlineExperiencesPage.ChooseFilters();
-            Thread.Sleep(3000);
             onlineExperiencesPage.ChooseLanguage();
             onlineExperiencesPage.ShowFilteredResults();
-            Thread.Sleep(3000);
             onlineExperiencesPage.ChooseDance();
             onlineExperiencesPage.VerifyFilteredResults();
         }
