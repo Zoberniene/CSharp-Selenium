@@ -25,20 +25,20 @@ namespace Airbnb_baigiamasis_projektas.Test
             flexiblePage.VerifyWeekendResults();
         }
         
-        /*[Test]
+        [Test]
         public static void TestPriceFilter() //netikrinta
         {
             homePage.NavigateToPage();
             homePage.ClickFlexibleButton();
             flexiblePage.ClickOnFilters();
             flexiblePage.InsertPriceRange();
-        }*/
+        }
         
         [Test]
         public static void TestSignupInsertWrongPhoneNumber() 
         {
             homePage.NavigateToPage();
-            Thread.Sleep(5000);
+            //Thread.Sleep(3000);
             homePage.ClickProfileButton();
             homePage.ClickSignupButton();
             homePage.SelectCountry();
@@ -69,6 +69,16 @@ namespace Airbnb_baigiamasis_projektas.Test
             onlineExperiencesPage.ShowFilteredResults();
             onlineExperiencesPage.ChooseDance();
             onlineExperiencesPage.VerifyFilteredResults();
+        }
+        
+        [Test]
+        public static void TestAirbnbLuxeFilter()
+        {
+            homePage.NavigateToPage();
+            homePage.ChooseLuxe();
+            luxePage.InsertDestination();
+            luxePage.ClickSearchButton();
+            luxePage.VerifyLuxeResults();
         }
     }
 }

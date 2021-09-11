@@ -25,6 +25,7 @@ namespace Airbnb_baigiamasis_projektas.Page
         private IWebElement increaseGuestsNum => Driver.FindElement(By.CssSelector("#stepper-adults > button:nth-child(3)"));
         private IWebElement searchButton => Driver.FindElement(By.CssSelector("._w64aej > button"));
         private IWebElement onlineExperiencesButton => Driver.FindElement(By.CssSelector("._36rlri > a"));
+        private IWebElement luxe => Driver.FindElement(By.CssSelector("body > div:nth-child(7) > div > div > div:nth-child(1) > div > div > div._1gw6tte > footer > div > div._fyxf74 > section:nth-child(1) > ul > li:nth-child(6) > a"));
         public HomePage(IWebDriver webdriver) : base(webdriver) {}
         
         public void NavigateToPage()
@@ -105,6 +106,11 @@ namespace Airbnb_baigiamasis_projektas.Page
         public void ChooseOnlineExperiences()
         {
             onlineExperiencesButton.Click();
+        }
+        
+        public void ChooseLuxe()
+        {
+            luxe.Click();
         }
         
         private void WaitForResult()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace Airbnb_baigiamasis_projektas.Page
@@ -71,8 +72,8 @@ namespace Airbnb_baigiamasis_projektas.Page
             priceMin.SendKeys("100");
             priceMax.Clear();
             priceMax.SendKeys("150");
-            Thread.Sleep(5000);
-            showStays.Click();
+           // Thread.Sleep(5000);
+            //showStays.Click();
         }
         
         /*public void VerifyFilteredPriceResults()

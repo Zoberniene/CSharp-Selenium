@@ -14,6 +14,7 @@ namespace Airbnb_baigiamasis_projektas.Test
         public static FlexiblePage flexiblePage;
         public static SearchResultsPage searchResultsPage;
         public static OnlineExperiencesPage onlineExperiencesPage;
+        public static LuxePage luxePage;
         
 
         [OneTimeSetUp]
@@ -24,6 +25,7 @@ namespace Airbnb_baigiamasis_projektas.Test
             flexiblePage = new FlexiblePage(driver);
             searchResultsPage = new SearchResultsPage(driver);
             onlineExperiencesPage = new OnlineExperiencesPage(driver);
+            luxePage = new LuxePage(driver);
         }
 
         [TearDown]
