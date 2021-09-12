@@ -5,14 +5,6 @@ namespace Airbnb_baigiamasis_projektas.Test
 {
     public class AirbnbTest: BaseTest
     {
-        [Test]
-        public static void TestFlexibleBeachfront()
-        {
-            homePage.NavigateToPage();
-            homePage.ClickFlexibleButton();
-            flexiblePage.ChooseBeachfrontOption();
-            flexiblePage.VerifyBeachfrontResults();
-        }
 
         [Test]
         public static void TestWeekendFilter()
@@ -26,19 +18,20 @@ namespace Airbnb_baigiamasis_projektas.Test
         }
         
         [Test]
-        public static void TestPriceFilter() //netikrinta
+        public static void TestPriceFilter()
         {
             homePage.NavigateToPage();
             homePage.ClickFlexibleButton();
             flexiblePage.ClickOnFilters();
             flexiblePage.InsertPriceRange();
+            flexiblePage.VerifyFilteredPriceResults();
         }
         
         [Test]
         public static void TestSignupInsertWrongPhoneNumber() 
         {
             homePage.NavigateToPage();
-            //Thread.Sleep(3000);
+            Thread.Sleep(3000);
             homePage.ClickProfileButton();
             homePage.ClickSignupButton();
             homePage.SelectCountry();
@@ -76,9 +69,11 @@ namespace Airbnb_baigiamasis_projektas.Test
         {
             homePage.NavigateToPage();
             homePage.ChooseLuxe();
-            luxePage.InsertDestination();
+            luxePage.InsertDestination("Nice");
+            luxePage.SelectAdultsNum();
+            luxePage.SelectChildrenNum();
             luxePage.ClickSearchButton();
-            luxePage.VerifyLuxeResults();
+            luxeResultsPage.VerifyLuxeResults();
         }
     }
 }
