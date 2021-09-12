@@ -12,11 +12,6 @@ namespace Airbnb_baigiamasis_projektas.Page
             Driver = webdriver;
         }
 
-        public void CloseBrowser()
-        {
-            Driver.Quit();
-        }
-        
         public WebDriverWait GetWait(int seconds = 7)
         {
             return new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));

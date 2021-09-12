@@ -15,8 +15,8 @@ namespace Airbnb_baigiamasis_projektas.Test
         public static SearchResultsPage searchResultsPage;
         public static OnlineExperiencesPage onlineExperiencesPage;
         public static LuxePage luxePage;
+        public static LuxeResultsPage luxeResultsPage;
         
-
         [OneTimeSetUp]
         public static void OneTimeSetUp()
         {
@@ -26,6 +26,7 @@ namespace Airbnb_baigiamasis_projektas.Test
             searchResultsPage = new SearchResultsPage(driver);
             onlineExperiencesPage = new OnlineExperiencesPage(driver);
             luxePage = new LuxePage(driver);
+            luxeResultsPage = new LuxeResultsPage(driver);
         }
 
         [TearDown]
@@ -38,7 +39,7 @@ namespace Airbnb_baigiamasis_projektas.Test
         [OneTimeTearDown]
         public static void OneTimeTearDown()
         {
-            //driver.Quit();
+            driver.Quit();
         }
     }
 }
