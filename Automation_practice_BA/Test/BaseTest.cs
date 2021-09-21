@@ -13,7 +13,6 @@ namespace Automation_practice_BA.Test
         public static HomePage homePage;
         public static CartPage cartPage;
         
-        
         [OneTimeSetUp]
         public static void OneTimeSetUp()
         {

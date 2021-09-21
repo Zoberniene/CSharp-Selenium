@@ -8,7 +8,7 @@ namespace Automation_practice_BA.Test
         public static void TestBuySearchedItem()
         {
             homePage.NavigateToPage();
-            homePage.InsertSearchProductName("printed");
+            homePage.InsertSearchedProductName("printed");
             homePage.ClickSearchButton();
             homePage.VerifySearchResults();
             homePage.AddItemToCart();

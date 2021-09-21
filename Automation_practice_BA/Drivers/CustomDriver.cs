@@ -12,16 +12,6 @@ namespace Automation_practice_BA.Drivers
         {
             return GetDriver(Browsers.Chrome);
         }
-        
-        public static IWebDriver GetFirefox()
-        {
-            return GetDriver(Browsers.Firefox);
-        }
-        
-        public static IWebDriver GetSafari()
-        {
-            return GetDriver(Browsers.Safari);
-        }
 
         private static IWebDriver GetDriver(Browsers webDriver)
         {

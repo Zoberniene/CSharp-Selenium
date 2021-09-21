@@ -11,10 +11,5 @@ namespace Automation_practice_BA.Page
         {
             Driver = webdriver;
         }
-
-        public WebDriverWait GetWait(int seconds = 5)
-        {
-            return new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
-        }
     }
 }

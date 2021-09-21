@@ -13,12 +13,12 @@ namespace Automation_practice_BA.Page
         private const string AddressUrl = "http://automationpractice.com/index.php";
         private IWebElement searchInput => Driver.FindElement(By.CssSelector("#search_query_top"));
         private IWebElement searchButton => Driver.FindElement(By.CssSelector("#searchbox > button"));
-        IReadOnlyCollection<IWebElement> results => Driver.FindElements(By.CssSelector("#center_column > ul > li"));
         private IWebElement searchResultsHeading => Driver.FindElement(By.CssSelector("#center_column > h1 > span.lighter"));
-        private IWebElement itemAddedToCart => Driver.FindElement(By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2"));
-        private IWebElement itemNumInCart => Driver.FindElement(By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > h2 > span.ajax_cart_product_txt"));
-        private IWebElement proceedToCartButton => Driver.FindElement(By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a"));
-        IReadOnlyCollection<IWebElement> searchResults => Driver.FindElements(By.CssSelector("#center_column > ul > li > div > div.right-block > h5 > a"));
+        private IWebElement itemAddedToCart => Driver.FindElement(By.CssSelector("#layer_cart .layer_cart_product h2"));
+        private IWebElement itemNumInCart => Driver.FindElement(By.CssSelector("#layer_cart .layer_cart_cart > h2 > span.ajax_cart_product_txt"));
+        private IWebElement proceedToCartButton => Driver.FindElement(By.CssSelector("#layer_cart .button-container > a"));
+        IReadOnlyCollection<IWebElement> searchResults => Driver.FindElements(By.CssSelector("#center_column > ul > li"));
+        IReadOnlyCollection<IWebElement> productNames => Driver.FindElements(By.CssSelector("#center_column > ul .right-block > h5 > a"));
         public HomePage(IWebDriver webdriver) : base(webdriver) {}
 
         public void NavigateToPage()
@@ -29,7 +29,7 @@ namespace Automation_practice_BA.Page
             }
         }
         
-        public void InsertSearchProductName(string name){
+        public void InsertSearchedProductName(string name){
             searchInput.Clear();
             searchInput.SendKeys(name);
         }
@@ -41,16 +41,16 @@ namespace Automation_practice_BA.Page
         public void VerifySearchResults()
         {
             Assert.IsTrue(searchResultsHeading.Text.Contains("PRINTED"), "Wrong search result heading");
-            foreach (IWebElement result in searchResults)
+            foreach (IWebElement product in productNames)
             {
-                Assert.IsTrue(result.Text.Contains("Printed"), "Wrong search results");
+                Assert.IsTrue(product.Text.Contains("Printed"), "Wrong search results");
             }
         }
         
         public void AddItemToCart(){
-            IWebElement firstResultElement = results.ElementAt(0);
+            IWebElement firstResultElement = searchResults.ElementAt(0);
             Actions action = new Actions(Driver);
-            IWebElement imageElement = firstResultElement.FindElement(By.CssSelector("#center_column > ul > li.ajax_block_product.col-xs-12.col-sm-6.col-md-4.first-in-line.first-item-of-tablet-line.first-item-of-mobile-line > div > div.left-block > div > a.product_img_link > img"));
+            IWebElement imageElement = firstResultElement.FindElement(By.CssSelector(".first-item-of-tablet-line.first-item-of-mobile-line .product_img_link > img"));
             action.MoveToElement(imageElement);
             action.Build().Perform();
             firstResultElement.FindElement(By.XPath("//span[contains(.,'Add to cart')]")).Click();
@@ -72,9 +72,8 @@ namespace Automation_practice_BA.Page
         { 
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             wait.Until(d =>
-                d.FindElement(By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2"))
+                d.FindElement(By.CssSelector("#layer_cart .layer_cart_product h2"))
                     .Displayed);
         }
-        
     }
 }

@@ -7,7 +7,7 @@ namespace Automation_practice_BA.Page
     public class CartPage: BasePage
     {
         private IWebElement productsQuantity => Driver.FindElement(By.CssSelector("#summary_products_quantity"));
-        private IWebElement proceedToCheckoutButton => Driver.FindElement(By.CssSelector("#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium"));
+        private IWebElement proceedToCheckoutButton => Driver.FindElement(By.CssSelector("a.standard-checkout.button-medium"));
         private IWebElement emailInput => Driver.FindElement(By.CssSelector("#email_create"));
         private IWebElement firstNameInput => Driver.FindElement(By.CssSelector("#customer_firstname"));
         private IWebElement lastNameInput => Driver.FindElement(By.CssSelector("#customer_lastname"));
@@ -26,7 +26,7 @@ namespace Automation_practice_BA.Page
         private IWebElement proceedToPaymentButton => Driver.FindElement(By.CssSelector("#form > p > button"));
         private IWebElement payByCheckOption => Driver.FindElement(By.CssSelector("#HOOK_PAYMENT > div:nth-child(2) > div > p > a"));
         private IWebElement confirmOrderButton => Driver.FindElement(By.CssSelector("#cart_navigation > button"));
-        private IWebElement orderConfirmation => Driver.FindElement(By.CssSelector("#center_column > p.alert.alert-success"));
+        private IWebElement orderConfirmation => Driver.FindElement(By.CssSelector("#center_column > p.alert"));
         private IWebElement backToOrdersButton => Driver.FindElement(By.CssSelector("#center_column > p.cart_navigation.exclusive > a"));
         private IWebElement orderStatus => Driver.FindElement(By.CssSelector("#order-list > tbody > tr > td.history_state > span"));
         public CartPage(IWebDriver webdriver) : base(webdriver) {}
@@ -43,7 +43,7 @@ namespace Automation_practice_BA.Page
 
         public void CreateNewAccount()
         {
-            emailInput.SendKeys("annndir@kl.bn");
+            emailInput.SendKeys("anrl@kl.bn");
             createAnAccountButton.Click();
         }
         
@@ -98,9 +98,9 @@ namespace Automation_practice_BA.Page
         public void VerifyOrderIsConfirmed()
         {
             Assert.AreEqual("Your order on My Store is complete.", orderConfirmation.Text, "Wrong order confirmation");
+            Assert.IsTrue(orderConfirmation.GetAttribute("class").Contains("alert-success"));
             backToOrdersButton.Click();
             Assert.AreEqual("On backorder", orderStatus.Text, "Wrong order status");
         }
-        
     }
 }
